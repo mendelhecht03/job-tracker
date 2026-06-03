@@ -8,15 +8,13 @@ CREATE TABLE jobs (
     title TEXT NOT NULL,
     description TEXT,
     rate_type TEXT NOT NULL CHECK(rate_type IN ('fixed_rate', 'hourly_rate')),
-    fixed_cents INTEGER CHECK(fixed_cents >= 0),
-    hourly_cents INTEGER CHECK (hourly_cents >= 0),
-    payment_method TEXT CHECK(payment_method IN ('check', 'cash', 'other')),
-    payment_interval TEXT NOT NULL CHECK(payment_interval IN ('weekly', 'biweekly', 'monthly', 'custom')), 
-    payday_date INTEGER NOT NULL CHECK(payday_date BETWEEN 1 AND 28), --TODO: 
+    fixed_rate INTEGER CHECK(fixed_rate >= 0),
+    hourly_rate INTEGER CHECK (hourly_rate >= 0),
+    payday_date INTEGER CHECK(payday_date BETWEEN 1 AND 31),
     CHECK (
-        (rate_type = 'fixed_rate') = (fixed_cents IS NOT NULL)
+        (rate_type = 'fixed_rate') = (fixed_rate IS NOT NULL)
         AND 
-        (rate_type = 'hourly_rate') = (hourly_cents IS NOT NULL)
+        (rate_type = 'hourly_rate') = (hourly_rate IS NOT NULL)
     ),
         
     FOREIGN KEY (category_id) REFERENCES categories(id)
@@ -24,7 +22,7 @@ CREATE TABLE jobs (
 CREATE TABLE job_entries (
     id INTEGER PRIMARY KEY,
     job_id INTEGER NOT NULL,
-    date TEXT NOT NULL DEFAULT (date('now')),
+    date_completed TEXT NOT NULL DEFAULT (date('now')),   
     completed INTEGER CHECK(completed IN (0,1)),
     time_worked REAL CHECK(time_worked >= 0),
     notes TEXT,  
