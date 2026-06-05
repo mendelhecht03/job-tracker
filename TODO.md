@@ -1,9 +1,4 @@
-## Usage ##
-#### Logging new jobs 
-python job-tracker.py job-title
 
-log hours/session: e.g 1:45 
-#### 
 #### TODO
 - Should set a character limit for job and category names
 - If user enters 31 and month does not have 31 days, the app layer should catch this and assume the user means that last day of the month
@@ -16,4 +11,5 @@ log hours/session: e.g 1:45
 - Create a Check in job entries to ensure 
 ##
 ### So Far Implemented
-- 
+- Add category function that like it's name suggests adds a new category to the category list
+- Basic 

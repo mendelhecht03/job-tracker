@@ -15,29 +15,31 @@ INSERT INTO categories (id, name) VALUES
 INSERT INTO jobs (
     id,
     category_id,
+    client_name,
     rate_type,
-    hourly_rate,
+    rate,
     payday_date,
-    title
+    description
 )
 VALUES
-    (1, 1, 'hourly_rate', 2500, 15, 'Math tutoring'),
-    (3, 2, 'hourly_rate', 3000, 10, 'Newsletter writing'),
-    (5, 4, 'hourly_rate', 4500, 25, 'Website maintenance'),
-    (7, 5, 'hourly_rate', 2000, 5, 'Client admin');
+    (1, 1, 'Miller Family', 'hourly_rate', 2500, 15, 'Math tutoring'),
+    (3, 2, 'Northside Newsletter', 'hourly_rate', 3000, 10, 'Newsletter writing'),
+    (5, 4, 'Acme Studio', 'hourly_rate', 4500, 25, 'Website maintenance'),
+    (7, 5, 'Bright Office Co', 'hourly_rate', 2000, 5, 'Client admin');
 
 INSERT INTO jobs (
     id,
     category_id,
+    client_name,
     rate_type,
-    fixed_rate,
+    rate,
     payday_date,
-    title
+    description
 )
 VALUES
-    (2, 1, 'fixed_rate', 5000, 15, 'SAT prep session'),
-    (4, 3, 'fixed_rate', 12000, 20, 'Logo concept'),
-    (6, 4, 'fixed_rate', 18000, 25, 'Landing page audit');
+    (2, 1, 'Garcia Family', 'fixed_rate', 5000, 15, 'SAT prep session'),
+    (4, 3, 'Greenline Cafe', 'fixed_rate', 12000, 20, 'Logo concept'),
+    (6, 4, 'LaunchStack', 'fixed_rate', 18000, 25, 'Landing page audit');
 
 INSERT INTO job_entries (
     job_id,

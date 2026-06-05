@@ -5,17 +5,11 @@ CREATE TABLE categories (
 CREATE TABLE jobs (
     id INTEGER PRIMARY KEY,
     category_id  INTEGER NOT NULL,
-    title TEXT NOT NULL,
+    client_name TEXT NOT NULL,
     description TEXT,
     rate_type TEXT NOT NULL CHECK(rate_type IN ('fixed_rate', 'hourly_rate')),
-    fixed_rate INTEGER CHECK(fixed_rate >= 0),
-    hourly_rate INTEGER CHECK (hourly_rate >= 0),
+    rate INTEGER CHECK(rate >= 0),
     payday_date INTEGER CHECK(payday_date BETWEEN 1 AND 31),
-    CHECK (
-        (rate_type = 'fixed_rate') = (fixed_rate IS NOT NULL)
-        AND 
-        (rate_type = 'hourly_rate') = (hourly_rate IS NOT NULL)
-    ),
         
     FOREIGN KEY (category_id) REFERENCES categories(id)
 );
